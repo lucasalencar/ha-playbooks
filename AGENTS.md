@@ -2,6 +2,11 @@
 
 Skills and docs for Home Assistant automation.
 
+## Repo layout
+
+- `docs/` is knowledge: definitions, the current organization, best practices, pitfalls. Anything an agent needs to **know** before acting lives here.
+- `skills/` is action: recurring operations and processes (e.g. audit, cleanup, consolidation). Anything an agent needs to **do** lives here, and skills reference `docs/` instead of embedding knowledge.
+
 ## Environment
 
 All live Home Assistant state (automations, entities, traces, logbook) is read and changed **only via the Home Assistant MCP**. The MCP must be connected in the agent session before any skill runs. Never parse `automations.yaml` dumps by hand when the MCP is available; never invent entity IDs or states.

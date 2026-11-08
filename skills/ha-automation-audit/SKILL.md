@@ -27,4 +27,4 @@ Completion: every automation inventoried in step 1 appears in step 4 with a disp
 - One automation per intent. Same trigger set in N automations is a merge signal, not a coincidence.
 - Prefer `trigger_id` + `choose` over N near-identical automations.
 - Prefer helpers (group, schedule, input_boolean) over duplicated conditions.
-- Flag `time_pattern` polling, missing `mode`, and missing `alias`/`description` as fragility. See [good-practices.md](references/good-practices.md).
+- Flag `time_pattern` polling, missing `mode`, and missing `alias`/`description` as fragility. See [good-practices.md](../../docs/good-practices.md).
