@@ -49,6 +49,18 @@ Jacque, Cozinha. No floors (single-story home).
 - Automations reacting to a person (arrival/departure) or running house-wide
   stay area-less.
 
+## Device names
+
+Device names are stable identity; area says where the device is. Never put
+the area in the device name — it goes stale on every move (a TV named after
+one room ends up in another).
+
+Pattern: `TV <Marca> <Polegadas><Modelo>` (fictitious examples, brands not
+owned here: `TV Philips 55P700`, `TV Sony 43X700`). Same brand + size: disambiguate by model
+first, then `01`/`02` by serial. Moving rooms only changes the area, never
+the name. `entity_id`s follow the same pattern
+(`media_player.tv_philips_55p700`).
+
 ## No duplication
 
 Never track the same concept as both a label and a category. `Viagem` used to
