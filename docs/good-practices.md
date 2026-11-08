@@ -20,3 +20,9 @@ Reference for `ha-automation-audit` merge/remove decisions.
 - Missing `mode`: default `single` silently drops overlaps; use `restart` for motion/buttons, `queued` for sequences that must not overlap, `parallel` only with a `max` bound.
 - Missing `alias` or `description`: blocks future audits.
 - Broad state triggers with no `for:` / `from:` / `to:`: fires on every attribute write.
+
+## Multi-sensor presence
+
+- Room with N occupancy sensors: `occupancy.is_not_detected` with `target: [all sensors]` + `behavior: all` (empty only when every sensor is clear). `behavior: any` here means empty when any single sensor clears — wrong for large rooms.
+- Occupied is the mirror: `occupancy.is_detected` with `behavior: any`.
+- Apply the same sensor list everywhere the room's presence is checked (arrival, good-night, away detection, light-on conditions); one stale single-sensor check defeats the second sensor.
