@@ -16,3 +16,7 @@ If the MCP is not connected, stop and ask the user to connect it instead of gues
 ## Safety
 
 Propose first, change later. Never create, edit, disable, or delete automations, helpers, or scripts without explicit user approval. Present the proposal and stop; apply only what the user confirms.
+
+## Learning loop
+
+After any HA change, improvement, or update, run a brief retrospective before the final summary: was there a reusable learning, gotcha, or process? If yes, suggest it in 1-2 lines with the target (`docs/` for knowledge, `skills/` for a repeatable process) and wait for approval. Create or update docs/skills only after the user confirms.
