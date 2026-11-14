@@ -26,6 +26,7 @@ Reference for `ha-automation-audit` merge/remove decisions.
 - Room with N occupancy sensors: `occupancy.is_not_detected` with `target: [all sensors]` + `behavior: all` (empty only when every sensor is clear). `behavior: any` here means empty when any single sensor clears — wrong for large rooms.
 - Occupied is the mirror: `occupancy.is_detected` with `behavior: any`.
 - Apply the same sensor list everywhere the room's presence is checked (arrival, good-night, away detection, light-on conditions); one stale single-sensor check defeats the second sensor.
+- Whole-house presence = person trackers OR any occupancy sensor (`condition: or`); put the empty-house outcome in `default` so `unknown` trackers fail toward it, not toward lighting the empty house.
 
 ## Light commands (no-flash)
 
