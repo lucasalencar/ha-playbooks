@@ -28,3 +28,4 @@ Completion: every automation inventoried in step 1 appears in step 4 with a disp
 - Prefer `trigger_id` + `choose` over N near-identical automations.
 - Prefer helpers (group, schedule, input_boolean) over duplicated conditions.
 - Flag `time_pattern` polling, missing `mode`, and missing `alias`/`description` as fragility. See [good-practices.md](../../docs/good-practices.md).
+- When a time trigger and a helper converge on the same effect, merge into the existing automation instead of creating a second one.

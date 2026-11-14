@@ -26,3 +26,16 @@ Reference for `ha-automation-audit` merge/remove decisions.
 - Room with N occupancy sensors: `occupancy.is_not_detected` with `target: [all sensors]` + `behavior: all` (empty only when every sensor is clear). `behavior: any` here means empty when any single sensor clears — wrong for large rooms.
 - Occupied is the mirror: `occupancy.is_detected` with `behavior: any`.
 - Apply the same sensor list everywhere the room's presence is checked (arrival, good-night, away detection, light-on conditions); one stale single-sensor check defeats the second sensor.
+
+## Light commands (no-flash)
+
+- Color + brightness + `transition` always in the same `light.turn_on` — never a bare `turn_on` followed by an adjustment (that's what causes the white flash at the last state).
+- Order: turn off first what stays off, turn on what stays on already with final parameters.
+- `transition` in seconds for changes with someone in the room; scenes apply instantly.
+- `color_temp_kelvin`, never `color_temp` (mireds removed in 2026.3).
+
+## Fail-safe for all-off
+
+- A destructive action's condition must fail toward NOT acting when the sensor/entity is `unavailable` (native conditions already do this — don't bypass with templates).
+- Cross-signals: TV on = room in use.
+- Vacancy with `for:` (15 min for the whole house) instead of instant "not detected" — sensors don't see someone sitting still.

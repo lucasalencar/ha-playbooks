@@ -24,3 +24,7 @@ This is a public repo: never put real household data in `docs/`, `skills/`, comm
 ## Learning loop
 
 After any HA change, improvement, or update, run a brief retrospective before the final summary: was there a reusable learning, gotcha, or process? If yes, suggest it in 1-2 lines with the target (`docs/` for knowledge, `skills/` for a repeatable process) and wait for approval. Create or update docs/skills only after the user confirms.
+
+## Workflow
+
+Re-read config before every write (optimistic locking: the hash changes between reads). Verify after every write by reading back. Never assume entity IDs — inventory via MCP first.
