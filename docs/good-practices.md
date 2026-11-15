@@ -28,6 +28,14 @@ Reference for `ha-automation-audit` merge/remove decisions.
 - Apply the same sensor list everywhere the room's presence is checked (arrival, good-night, away detection, light-on conditions); one stale single-sensor check defeats the second sensor.
 - Whole-house presence = person trackers OR any occupancy sensor (`condition: or`); put the empty-house outcome in `default` so `unknown` trackers fail toward it, not toward lighting the empty house.
 
+## Trigger guard per branch
+
+Every branch of a multi-trigger automation needs a `condition: trigger` with its trigger ID. Without it, the second trigger falls through into the first branch (e.g. a 21:00 time trigger re-running the sunset scene).
+
+## Fixed times for circadian regularity
+
+Prefer fixed clock times over sun offsets for steps meant to entrain the sleep cycle (e.g. a 21:00 warm-down): fixed times reinforce the rhythm; sun offsets drift daily. Keep sun triggers only where the astronomical event itself matters (dusk lighting).
+
 ## Light commands (no-flash)
 
 - Color + brightness + `transition` always in the same `light.turn_on` — never a bare `turn_on` followed by an adjustment (that's what causes the white flash at the last state).
