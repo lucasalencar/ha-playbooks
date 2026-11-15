@@ -36,6 +36,10 @@ Every branch of a multi-trigger automation needs a `condition: trigger` with its
 
 Prefer fixed clock times over sun offsets for steps meant to entrain the sleep cycle (e.g. a 21:00 warm-down): fixed times reinforce the rhythm; sun offsets drift daily. Keep sun triggers only where the astronomical event itself matters (dusk lighting).
 
+## Confirm actuator semantics (when in doubt)
+
+When unsure what a command physically does on the device, check before designing triggers and schedules around it (e.g. `turn_on` on a smart plug energizes the outlet — it doesn't start the appliance). No check needed for well-known actuators.
+
 ## Light commands (no-flash)
 
 - Color + brightness + `transition` always in the same `light.turn_on` — never a bare `turn_on` followed by an adjustment (that's what causes the white flash at the last state).
